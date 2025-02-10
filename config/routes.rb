@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
-  get("/roll/:dice/:sides", { :controller => "dice", :action => "roll" })
+  get("/dice/:number_of_dice/:number_of_sides", { :controller => "dice", :action => "roll" })
+
+  get("/", { :controller => "dice", :action => "home" })
 
 end 

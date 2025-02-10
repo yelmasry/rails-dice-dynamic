@@ -1,16 +1,21 @@
 class DiceController < ApplicationController
   def roll
-    @num_dice = params.fetch("dice").to_i
-    @roll_dice = params.fetch("sides").to_i
+    @num_dice = params.fetch("number_of_dice").to_i
+    @num_sides = params.fetch("number_of_sides").to_i
 
-    @rolls = [] 
+    @dice = [] 
 
     @num_dice.times do 
-      die = rand(1..6) 
+      die = rand(1..@num_sides) 
 
-      @rolls.push(die)
+      @dice.push(die)
     end 
     
-    render({ :template => "dice_templates/home"})
+    render({ :template => "dice_templates/flexible"})
   end
+
+  def home 
+    render({ :template => "dice_templates/home"})
+  end 
+
 end
